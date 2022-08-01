@@ -35,8 +35,9 @@ const Game = (() => {
     name2 = playerName2.value;
   });
 
-  const player1 = player(name1, "X");
-  const player2 = player(name2, "O");
+  const player1 = player(playerName1.value, "X");
+  const player2 = player(playerName2.value, "O");
+
   let currentPlayer = player1;
 
   const switchPlayer = () => {
@@ -48,62 +49,44 @@ const Game = (() => {
   const checkWin = (player) => {
     //diagonais
     if (
-      Gameboard.gameBoard[0] == player.marker &&
-      Gameboard.gameBoard[4] == player.marker &&
-      Gameboard.gameBoard[8] == player.marker
+      (Gameboard.gameBoard[0] == player.marker &&
+        Gameboard.gameBoard[4] == player.marker &&
+        Gameboard.gameBoard[8] == player.marker) ||
+      (Gameboard.gameBoard[2] == player.marker &&
+        Gameboard.gameBoard[4] == player.marker &&
+        Gameboard.gameBoard[6] == player.marker) ||
+      //horizontais
+      (Gameboard.gameBoard[0] == player.marker &&
+        Gameboard.gameBoard[1] == player.marker &&
+        Gameboard.gameBoard[2] == player.marker) ||
+      (Gameboard.gameBoard[3] == player.marker &&
+        Gameboard.gameBoard[4] == player.marker &&
+        Gameboard.gameBoard[5] == player.marker) ||
+      (Gameboard.gameBoard[8] == player.marker &&
+        Gameboard.gameBoard[7] == player.marker &&
+        Gameboard.gameBoard[6] == player.marker) ||
+      //verticais
+      (Gameboard.gameBoard[8] == player.marker &&
+        Gameboard.gameBoard[5] == player.marker &&
+        Gameboard.gameBoard[2] == player.marker) ||
+      (Gameboard.gameBoard[0] == player.marker &&
+        Gameboard.gameBoard[3] == player.marker &&
+        Gameboard.gameBoard[6] == player.marker) ||
+      (Gameboard.gameBoard[7] == player.marker &&
+        Gameboard.gameBoard[4] == player.marker &&
+        Gameboard.gameBoard[1] == player.marker)
     ) {
-      console.log("ACERTOU");
-    }
-    if (
-      Gameboard.gameBoard[2] == player.marker &&
-      Gameboard.gameBoard[4] == player.marker &&
-      Gameboard.gameBoard[6] == player.marker
-    ) {
-      console.log("acertou");
-    }
-    //horizontais
-    if (
-      Gameboard.gameBoard[0] == player.marker &&
-      Gameboard.gameBoard[1] == player.marker &&
-      Gameboard.gameBoard[2] == player.marker
-    ) {
-      console.log("acertou");
-    }
-    if (
-      Gameboard.gameBoard[3] == player.marker &&
-      Gameboard.gameBoard[4] == player.marker &&
-      Gameboard.gameBoard[5] == player.marker
-    ) {
-      console.log("acertou");
-    }
-    if (
-      Gameboard.gameBoard[8] == player.marker &&
-      Gameboard.gameBoard[7] == player.marker &&
-      Gameboard.gameBoard[6] == player.marker
-    ) {
-      console.log("acertou");
-    }
-    //verticais
-    if (
-      Gameboard.gameBoard[8] == player.marker &&
-      Gameboard.gameBoard[5] == player.marker &&
-      Gameboard.gameBoard[2] == player.marker
-    ) {
-      console.log("acertou");
-    }
-    if (
-      Gameboard.gameBoard[0] == player.marker &&
-      Gameboard.gameBoard[3] == player.marker &&
-      Gameboard.gameBoard[6] == player.marker
-    ) {
-      console.log("acertou");
-    }
-    if (
-      Gameboard.gameBoard[7] == player.marker &&
-      Gameboard.gameBoard[4] == player.marker &&
-      Gameboard.gameBoard[1] == player.marker
-    ) {
-      console.log("acertou");
+      let background = document.querySelector(".tudo");
+      let winnerScreen = document.createElement("div");
+      let theWinnerIs = document.createElement("h2");
+      let winner = document.createElement("h1");
+      theWinnerIs.innerHTML = "The winner is";
+      winner.innerHTML = `player: ${player.name} with ${player.marker}!`;
+      winnerScreen.appendChild(theWinnerIs);
+      winnerScreen.appendChild(winner);
+      winnerScreen.classList.add("winner-screen");
+      document.body.appendChild(winnerScreen);
+      background.style.filter = "blur(5px)";
     }
   };
 
