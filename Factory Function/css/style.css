@@ -28,3 +28,23 @@ body {
   border: 1px solid #000;
   font-size: 120px;
 }
+.winner-screen {
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: white;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.winner-screen h1 {
+  font-size: 120px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.winner-screen h2 {
+  font-size: 100px;
+  text-align: center;
+  margin-top: 20px;
+}
