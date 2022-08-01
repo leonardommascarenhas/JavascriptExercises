@@ -35,8 +35,8 @@ const Game = (() => {
     name2 = playerName2.value;
   });
 
-  const player1 = player(playerName1.value, "X");
-  const player2 = player(playerName2.value, "O");
+  const player1 = player(name1, "X");
+  const player2 = player(name2, "O");
 
   let currentPlayer = player1;
 
