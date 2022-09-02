@@ -1,1 +1,1 @@
-!function(e,n){let t=document.querySelector(".dropdown-menu"),o=document.querySelector("nav");e.addEventListener("mouseenter",(()=>t.classList.add(n))),o.addEventListener("mouseleave",(()=>t.classList.remove(n)))}(document.querySelector(".menu-btn"),"visible-menu");
+!function(e,n){let t=document.querySelector(".dropdown-menu"),o=document.querySelector("nav");e.addEventListener("mouseenter",(()=>t.classList.remove(n))),o.addEventListener("mouseleave",(()=>t.classList.add(n)))}(document.querySelector(".menu-btn"),"dropdown-menu");
