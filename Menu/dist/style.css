@@ -1,0 +1,43 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown-menu {
+  display: none;
+}
+
+.visible-menu {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  position: fixed; /* Make it stick, even on scroll */
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+.visible-menu li a {
+  display: block;
+  text-decoration: none;
+  width: 100px;
+  height: 60px;
+}
+.visible-menu li {
+  text-align: center;
+  border-bottom: 1px solid #555;
+}
+
+.visible-menu li:last-child {
+  border-bottom: none;
+}
+
+.visible-menu li a:hover {
+  background-color: rebeccapurple;
+}
