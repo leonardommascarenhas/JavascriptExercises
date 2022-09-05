@@ -1,58 +1,23 @@
-let form = document.querySelector("#form");
-let addBtn = document.querySelector("#addBtn");
-let myLibrary = [];
+const A = [1, 3, 4, 2, 1, 6];
+const B = [-1, -3, 4, -72, 134, 9, 7, 1, 9];
 
-function Book(name, author, pages) {
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-}
-
-function addBookToLibrary(e) {
-  e.preventDefault();
-  let book = new Book(form.name.value, form.author.value, form.pages.value);
-  myLibrary.push(book);
-  createCard();
-  form.reset();
-  console.log(myLibrary);
-}
-
-function createCard() {
-  let container = document.querySelector(".container");
-  let cardContainer = document.createElement("div");
-  let bookName = document.createElement("p");
-  let bookAuthor = document.createElement("p");
-  let bookPages = document.createElement("p");
-  let removeBtn = document.createElement("button");
-  removeBtn.classList.add("removeBtn");
-  cardContainer.classList.add("cardContainer");
-  for (let i = 0; i < myLibrary.length; i++) {
-    bookName.innerHTML = `Book Name: ${myLibrary[i].name}`;
-    bookAuthor.innerHTML = `Author: ${myLibrary[i].author}`;
-    bookPages.innerHTML = `Pages: ${myLibrary[i].pages}`;
-    cardContainer.appendChild(bookName);
-    cardContainer.appendChild(bookAuthor);
-    cardContainer.appendChild(bookPages);
-    cardContainer.appendChild(removeBtn);
-    container.appendChild(cardContainer);
+function solution(array) {
+  const a = array
+    .filter((x) => {
+      return x > -1;
+    })
+    .sort((a, b) => a - b);
+  let newArray = [...new Set(a)];
+  let lowestOutsideNumber = newArray[0];
+  for (let i = 1; i < newArray.length; i++) {
+    if (lowestOutsideNumber + 1 < newArray[i]) {
+      lowestOutsideNumber = lowestOutsideNumber + 1;
+      break;
+    } else {
+      lowestOutsideNumber = newArray[i];
+    }
   }
-  removeBtn.addEventListener("click", removeBookFromLibrary);
+  return lowestOutsideNumber;
 }
-
-function removeBookFromLibrary(e) {
-  e.preventDefault();
-  let cardContainer = e.target.parentElement;
-  cardContainer.remove();
-  removeFromArray(e);
-  console.log(myLibrary);
-}
-function removeFromArray(e) {
-  index = myLibrary.indexOf(e);
-  myLibrary.splice(index, 1);
-}
-function popUp() {
-  let modal = document.querySelector(".popUp");
-  modal.style.display = "block";
-}
-
-addBtn.addEventListener("click", addBookToLibrary);
+console.log(solution(A));
+console.log(solution(B));
