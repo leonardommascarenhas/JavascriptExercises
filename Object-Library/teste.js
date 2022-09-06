@@ -124,4 +124,75 @@ function isValidWalk(walk) {
     return false;
   }
 }
-console.log(isValidWalk(["n", "s", "n", "s", "n", "s", "n", "s", "n", "s"]));
+
+function getMiddle(s) {
+  let stringArray = s.split("");
+  let string = stringArray.length;
+  let condition = string / 2;
+  return string % 2 != 0 ? stringArray[condition - 0.5] : stringArray[condition - 1] + stringArray[condition];
+}
+console.log(getMiddle("aloo"));
+
+function repeatString(n, s) {
+  return s.repeatString(n);
+}
+
+function check(a, x) {
+  let arr = [];
+  for (let i = 0; i <= a.length; i++) {
+    arr.push(x == a[i]);
+  }
+  let array = arr.filter((element) => element == true);
+  return array.length > 0;
+}
+String.prototype.toJadenCase = function () {
+  return this.split(" ")
+    .map(function (word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+};
+
+function getCount(str) {
+  let array = str.split("");
+  let arr = array.filter(
+    (element) =>
+      element.includes("a") ||
+      element.includes("e") ||
+      element.includes("i") ||
+      element.includes("o") ||
+      element.includes("u")
+  );
+  return arr.length;
+}
+function XO(str) {
+  let array = str.toLowerCase().split("");
+  let xs = 0;
+  let os = 0;
+  for (let i = 0; i <= array.length; i++) {
+    array[i] == "x" ? xs++ : array[i] == "o" ? os++ : 0;
+  }
+  return xs == os ? true : false;
+}
+function DNAStrand(dna) {
+  let a = dna.toUpperCase().split("");
+  for (let i = 0; i < a.length; i++) {
+    switch (a[i]) {
+      case "T":
+        a[i] = "A";
+        break;
+      case "A":
+        a[i] = "T";
+        break;
+      case "G":
+        a[i] = "C";
+        break;
+      case "C":
+        a[i] = "G";
+        break;
+    }
+  }
+  return a.toJoin("");
+}
+
+DNAStrand("ATTGC");
