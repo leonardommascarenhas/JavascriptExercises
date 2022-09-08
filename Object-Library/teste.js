@@ -195,4 +195,31 @@ function DNAStrand(dna) {
   return a.toJoin("");
 }
 
-DNAStrand("ATTGC");
+const reverseSeq = (n) => {
+  let array = [];
+  for (let i = n; i > 0; i--) {
+    array.push(i);
+  }
+  return array;
+};
+
+console.log(reverseSeq(5));
+
+const longest = (s1, s2) => [...new Set(s1 + s2)].sort().join("");
+
+function stray(numbers) {
+  let a = numbers.shift();
+  for (let i = 0; i <= numbers.length; i++) {
+    if (a != numbers[i] && a != numbers[i + 1]) {
+      return a;
+    } else if (a != numbers[i]) {
+      return numbers[i];
+    }
+  }
+}
+
+function addBinary(a, b) {
+  return (a + b).toString(2);
+}
+
+console.log(reverseWords("o rato roeu a ropa do rei de roma"));

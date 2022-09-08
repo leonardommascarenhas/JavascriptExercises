@@ -17,7 +17,7 @@ function solution(array) {
       lowestOutsideNumber = newArray[i];
     }
   }
-  return lowestOutsideNumber;
+  return lowestOutsideNumber + 1;
 }
 console.log(solution(A));
 console.log(solution(B));
