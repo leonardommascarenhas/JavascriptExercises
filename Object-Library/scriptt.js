@@ -1,21 +1,14 @@
-let form = document.querySelector("#form");
+let form = document.querySelector("form");
 let addBtn = document.querySelector("#addBtn");
+const bookName = document.querySelector("#name");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
 let myLibrary = [];
 
-class Book {
-  constructor(name, author, pages) {
-    this.name = name;
-    this.author = author;
-    this.pages = pages;
-  }
-  addBookToLibrary(e) {
-    e.preventDefault();
-    let book = new Book(form.name.value, form.author.value, form.pages.value);
-    myLibrary.push(book);
-    createCard();
-    form.reset();
-    console.log(myLibrary);
-  }
+function Book(name, author, pages) {
+  this.name = name;
+  this.author = author;
+  this.pages = pages;
 }
 function createCard() {
   let container = document.querySelector(".container");
@@ -55,4 +48,64 @@ function popUp() {
   modal.style.display = "block";
 }
 
-addBtn.addEventListener("click", new Book().addBookToLibrary);
+function addBookToLibrary(name, author, pages) {
+  let book = new Book(name, author, pages);
+  myLibrary.push(book);
+  createCard();
+  form.reset();
+  console.log(myLibrary);
+}
+
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = message;
+  inputControl.classList.remove("sucess");
+  inputControl.classList.add("error");
+};
+const setSucess = (element) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.remove("error");
+  inputControl.classList.add("sucess");
+};
+const validateInputs = () => {
+  const bookValue = bookName.value;
+  const authorValue = author.value;
+  const pagesValue = pages.value;
+
+  if (bookValue === "") {
+    setError(bookName, "Your book has no name");
+  } else {
+    setSucess(bookName);
+  }
+  if (authorValue === "") {
+    setError(author, "Your author has no name");
+  } else {
+    setSucess(author);
+  }
+  if (pagesValue === "") {
+    setError(pages, "Your book has no pages");
+  } else {
+    setSucess(pages);
+  }
+};
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  validateInputs();
+});
+addBtn.addEventListener("click", () => {
+  if (
+    bookName.parentElement.classList.contains("sucess") &&
+    author.parentElement.classList.contains("sucess") &&
+    pages.parentElement.classList.contains("sucess")
+  ) {
+    let book = new Book(bookName.value, author.value, pages.value);
+    myLibrary.push(book);
+    createCard();
+    console.log(myLibrary);
+  }
+});
