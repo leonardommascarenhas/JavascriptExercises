@@ -20,6 +20,9 @@ const setSucess = (element) => {
   inputControl.classList.add("sucess");
   inputControl.classList.remove("error");
 };
+function containsNumber(str) {
+  return /\d/.test(str);
+}
 
 const validateInputs = () => {
   const nameValue = userName.value;
@@ -27,6 +30,11 @@ const validateInputs = () => {
   const passwordValue = password.value;
   const passwordConfirmationValue = passwordConfirmation.value;
 
+  if (nameValue == "") {
+    setError(userName, "O nome está em branco");
+  } else {
+    setSucess(userName);
+  }
   //começar daqui, aprender sobre regex;
 };
 
