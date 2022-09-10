@@ -10,29 +10,42 @@
 </head>
 
 <body>
-    <form id="form">
-        <div class="input-control">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">
-            <div class="error"></div>
-        </div>
-        <div class="input-control">
-            <label for="zipCode">Zip Code</label>
-            <input type="number" name="zipCode" id="zipCode">
-            <div class="error"></div>
-        </div>
-        <div class="input-control">
-            <label for="password">password</label>
-            <input type="password" name="password" id="password">
-            <div class="error"></div>
-        </div>
-        <div class="input-control">
-            <label for="passwordConfirmation">repeat password</label>
-            <input type="password" name="passwordConfirmation" id="passwordConfirmation">
-            <div class="error"></div>
-        </div>
-        <button type="submit">Aqui</button>
-    </form>
+    <div class="container">
+        <form class="form " id="form">
+            <div class="header">
+                <h2>Create Account</h2>
+            </div>
+            <div class="input-control">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="input-control">
+                <label for="zipCode">Zip Code</label>
+                <input type="number" name="zipCode" id="zipCode">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="input-control">
+                <label for="password">password</label>
+                <input type="password" name="password" id="password">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="input-control">
+                <label for="passwordConfirmation">repeat password</label>
+                <input type="password" name="passwordConfirmation" id="passwordConfirmation">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <button type="submit">Aqui</button>
+        </form>
+    </div>
     <script src="./index.js"></script>
 </body>
 

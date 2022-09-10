@@ -6,19 +6,15 @@ const passwordConfirmation = document.getElementById("passwordConfirmation");
 
 const setError = (element, message) => {
   const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector(".error");
+  const errorDisplay = inputControl.querySelector("small");
 
   errorDisplay.innerText = message;
-  inputControl.classList.add("error");
-  inputControl.classList.remove("sucess");
+  inputControl.className = "input-control error";
 };
-const setSucess = (element) => {
-  const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector(".error");
 
-  errorDisplay.innerText = "";
-  inputControl.classList.add("sucess");
-  inputControl.classList.remove("error");
+const setSuccess = (element) => {
+  const inputControl = element.parentElement;
+  inputControl.className = "input-control success";
 };
 function containsNumber(str) {
   return /\d/.test(str);
@@ -32,8 +28,10 @@ const validateInputs = () => {
 
   if (nameValue == "") {
     setError(userName, "O nome está em branco");
+  } else if (containsNumber(nameValue) === true) {
+    setError(userName, "O nome deve apenas conter letras");
   } else {
-    setSucess(userName);
+    setSuccess(userName);
   }
   //começar daqui, aprender sobre regex;
 };
