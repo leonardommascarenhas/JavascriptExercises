@@ -9,16 +9,21 @@ const setError = (element, message) => {
   const errorDisplay = inputControl.querySelector("small");
 
   errorDisplay.innerText = message;
-  inputControl.className = "input-control error";
+  inputControl.className = "form-control error";
 };
 
 const setSuccess = (element) => {
   const inputControl = element.parentElement;
-  inputControl.className = "input-control success";
+  inputControl.className = "form-control success";
 };
-function containsNumber(str) {
-  return /\d/.test(str);
-}
+
+const containsNumber = (str) => {
+  return /[^a-zA-Z]/.test(str);
+};
+
+const containsLetter = (str) => {
+  return /^[0-9]+$/.test(str);
+};
 
 const validateInputs = () => {
   const nameValue = userName.value;
@@ -28,12 +33,19 @@ const validateInputs = () => {
 
   if (nameValue == "") {
     setError(userName, "O nome está em branco");
-  } else if (containsNumber(nameValue) === true) {
+  } else if (containsNumber(nameValue)) {
     setError(userName, "O nome deve apenas conter letras");
   } else {
     setSuccess(userName);
   }
-  //começar daqui, aprender sobre regex;
+
+  if (zipCodeValue <= 0) {
+    setError(zipCode, "O campo de CEP não poderá ficar vazio");
+  } else if (zipCodeValue.length !== 8) {
+    setError(zipCode, "O CEP deve conter 8 digitos");
+  } else {
+    setSuccess(zipCode);
+  }
 };
 
 form.addEventListener("submit", (e) => {

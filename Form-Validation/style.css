@@ -38,18 +38,18 @@ body {
   padding: 30px 40px;
 }
 
-.input-control {
+.form-control {
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
 }
 
-.input-control label {
+.form-control label {
   display: inline-block;
   margin-bottom: 5px;
 }
 
-.input-control input {
+.form-control input {
   border: 2px solid #f0f0f0;
   border-radius: 4px;
   display: block;
@@ -59,37 +59,37 @@ body {
   width: 100%;
 }
 
-.input-control input:focus {
+.form-control input:focus {
   outline: 0;
   border-color: #777;
 }
 
-.input-control.success input {
+.form-control.success input {
   border-color: #2ecc71;
 }
 
-.input-control.error input {
+.form-control.error input {
   border-color: #e74c3c;
 }
 
-.input-control i {
+.form-control i {
   visibility: hidden;
   position: absolute;
   top: 40px;
   right: 10px;
 }
 
-.input-control.success i.fa-check-circle {
+.form-control.success i.fa-check-circle {
   color: #2ecc71;
   visibility: visible;
 }
 
-.input-control.error i.fa-exclamation-circle {
+.form-control.error i.fa-exclamation-circle {
   color: #e74c3c;
   visibility: visible;
 }
 
-.input-control small {
+.form-control small {
   color: #e74c3c;
   position: absolute;
   bottom: 0;
@@ -97,7 +97,7 @@ body {
   visibility: hidden;
 }
 
-.input-control.error small {
+.form-control.error small {
   visibility: visible;
 }
 
