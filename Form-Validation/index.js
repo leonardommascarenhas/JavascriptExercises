@@ -35,6 +35,8 @@ const validateInputs = () => {
     setError(userName, "O nome está em branco");
   } else if (containsNumber(nameValue)) {
     setError(userName, "O nome deve apenas conter letras");
+  } else if (nameValue.length <= 1) {
+    setError(userName, "O nome é muito curto");
   } else {
     setSuccess(userName);
   }
@@ -45,6 +47,18 @@ const validateInputs = () => {
     setError(zipCode, "O CEP deve conter 8 digitos");
   } else {
     setSuccess(zipCode);
+  }
+
+  if (passwordValue.length < 8) {
+    setError(password, "Sua senha deverá conter pelo menos 8 caracteres");
+  } else {
+    setSuccess(password);
+  }
+
+  if (passwordConfirmationValue === passwordValue && passwordValue.length > 8) {
+    setSuccess(passwordConfirmation);
+  } else {
+    setError(passwordConfirmation, "Suas senhas não coincidem");
   }
 };
 
