@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <form>
+            <input type="text" name="search" id="search">
+            <button type="submit">new image</button>
+        </form>
+        <img src="#">
+        <script>
+            const text = document.querySelector('#search')
+            const img = document.querySelector('img');
+            const form = document.querySelector("form")
+
+            fetch(`https://api.giphy.com/v1/gifs/translate?api_key=Yi7UuMuE4PoO5LXvFuXyTjzUdKdSu9UH&s=cats`, { mode: 'cors' })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((response) => {
+                    img.src = response.data.images.original.url;
+                });
+            form.addEventListener('submit', (e) => {
+                e.preventDefault()
+                const textValue = text.value
+                fetch(`https://api.giphy.com/v1/gifs/translate?api_key=Yi7UuMuE4PoO5LXvFuXyTjzUdKdSu9UH&s=${textValue}`, { mode: 'cors' })
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((response) => {
+                        img.src = response.data.images.original.url;
+                    });
+            })
+        </script>
+    </body>
+
+    </html>
+</body>
+
+</html>
