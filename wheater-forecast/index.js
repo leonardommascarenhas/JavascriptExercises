@@ -1,10 +1,11 @@
 const form = document.querySelector("form");
 
 class Location {
-  constructor(city, latitude, longitude) {
+  constructor(city, latitude, longitude, wheater) {
     this.city = city;
     this.latitude = latitude;
     this.longitude = longitude;
+    this.wheater = wheater;
   }
   setCity(city) {
     this.city = city;
@@ -24,6 +25,12 @@ class Location {
   getLongitude() {
     return this.longitude;
   }
+  setWheater(weather) {
+    this.wheater = weather.toFixed(2);
+  }
+  getWheater() {
+    return this.wheater;
+  }
 }
 
 let city = new Location();
@@ -34,11 +41,9 @@ async function getLocation() {
     `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=7cea7239b0f46b49f70f491625a1e8f2`
   );
   const cityData = await response.json();
-  console.log(cityData);
   city.setCity(cityData[0].name);
   city.setLatitude(cityData[0].lat);
   city.setLongitude(cityData[0].lon);
-  console.log(city);
   return city;
 }
 async function getWheater() {
@@ -46,9 +51,6 @@ async function getWheater() {
     `https://api.openweathermap.org/data/2.5/weather?lat=${city.getLatitude()}&lon=${city.getLongitude()}&appid=7cea7239b0f46b49f70f491625a1e8f2`
   );
   const cityData = await response.json();
-  console.log(response);
-  console.log(city.getLatitude());
-  console.log(cityData);
 }
 
 form.addEventListener("submit", async (e) => {
