@@ -1,3 +1,4 @@
+i
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,18 +18,20 @@
     <main>
         <header>
             <img src="./imgs/cloudy.png" alt="">
-            <h1 id="Title">Previsão do tempo</h1>
+            <h1 id="Title">Weather App</h1>
         </header>
         <form action="">
             <input type="text" name="cityName" id="cityName">
             <button type="submit">enviar</button>
         </form>
         <div class="weatherDisplay">
-            <h2 id="city"></h2>
-            <p id="weather"></p>
+            <h1><span id="city"></span>, <span id="country"></span></h1>
             <div class="contentContainer">
                 <img src="" alt="weather" id="icon">
-                <p id="temp"></p>
+                <h2 id="temp"></h2>
+            </div>
+            <div class="bottom-display">
+                <p id="weather"></p>
             </div>
         </div>
     </main>
