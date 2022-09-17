@@ -34,7 +34,7 @@ class Location {
     return this.weather;
   }
   setTemperature(temp) {
-    this.temperature = temp;
+    this.temperature = Math.trunc(temp);
   }
   getTemperature() {
     return this.temperature;
@@ -77,13 +77,16 @@ const getWeather = async () => {
 };
 
 const displayCity = async () => {
+  const display = document.querySelector(".weatherDisplay");
   const icon = document.querySelector("#icon");
   const cityName = document.querySelector("#city");
   const weather = document.querySelector("#weather");
   const temp = document.querySelector("#temp");
+  display.style.display = "flex";
+  display.style.flexDirection = "column";
   icon.src = `http://openweathermap.org/img/wn/${city.getIcon()}@2x.png`;
   weather.innerText = city.getWeather();
-  temp.innerText = city.getTemperature();
+  temp.innerText = `${city.getTemperature()} °C`;
   cityName.innerText = city.getCity();
 };
 

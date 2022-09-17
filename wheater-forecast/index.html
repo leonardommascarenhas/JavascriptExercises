@@ -8,19 +8,28 @@
     <title>Document</title>
     <link rel="stylesheet" href="./syle.css">
     <script defer src="./index.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <main>
+        <header>
+            <img src="./imgs/cloudy.png" alt="">
+            <h1 id="Title">Previsão do tempo</h1>
+        </header>
         <form action="">
             <input type="text" name="cityName" id="cityName">
-            <button type="submit"></button>
+            <button type="submit">enviar</button>
         </form>
         <div class="weatherDisplay">
-            <img src="" alt="weather" id="icon">
-            <p id="city"></p>
+            <h2 id="city"></h2>
             <p id="weather"></p>
-            <p id="temp"></p>
+            <div class="contentContainer">
+                <img src="" alt="weather" id="icon">
+                <p id="temp"></p>
+            </div>
         </div>
     </main>
 </body>
