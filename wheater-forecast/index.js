@@ -27,13 +27,13 @@ class Location {
     return this.longitude;
   }
   setWeather(weather) {
-    this.weather = weather.toFixed(2);
+    this.weather = weather;
   }
   getWeather() {
     return this.weather;
   }
   setTemperature(temp) {
-    this.temp = temp.toFixed(2);
+    this.temperature = temp;
   }
   getTemperature() {
     return this.temp;
@@ -42,7 +42,7 @@ class Location {
 
 let city = new Location();
 
-async function getLocation() {
+const getLocation = async () => {
   const input = document.getElementById("cityName").value;
   const response = await fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=7cea7239b0f46b49f70f491625a1e8f2`
@@ -52,17 +52,22 @@ async function getLocation() {
   city.setLatitude(cityData[0].lat);
   city.setLongitude(cityData[0].lon);
   return city;
-}
-async function getWeather() {
+};
+const getWeather = async () => {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${city.getLatitude()}&lon=${city.getLongitude()}&appid=7cea7239b0f46b49f70f491625a1e8f2`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${city.getLatitude()}&lon=${city.getLongitude()}&appid=7cea7239b0f46b49f70f491625a1e8f2&units=metric`
   );
   const cityData = await response.json();
   const weather = cityData.weather[0].main;
+  const temp = cityData.main.temp;
+  city.setWeather(weather);
+  city.setTemperature(temp);
+  console.log(temp);
   console.log(cityData);
   console.log(weather);
-}
-
+  console.log(city);
+};
+const displayCity = async () => {};
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   await getLocation();
