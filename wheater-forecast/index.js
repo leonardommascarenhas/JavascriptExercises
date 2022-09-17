@@ -51,6 +51,9 @@ async function getWheater() {
     `https://api.openweathermap.org/data/2.5/weather?lat=${city.getLatitude()}&lon=${city.getLongitude()}&appid=7cea7239b0f46b49f70f491625a1e8f2`
   );
   const cityData = await response.json();
+  const weather = cityData.weather[0].main;
+  console.log(cityData);
+  console.log(weather);
 }
 
 form.addEventListener("submit", async (e) => {
