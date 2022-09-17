@@ -1,6 +1,18 @@
 body {
+  background-color: #4b8dff;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+main {
+  height: 60%;
+  width: 30%;
+  background-color: #407de6;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
