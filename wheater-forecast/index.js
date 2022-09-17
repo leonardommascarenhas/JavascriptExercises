@@ -118,14 +118,21 @@ const displayCity = async () => {
   const countryName = document.querySelector("#country");
   const weather = document.querySelector("#weather");
   const temp = document.querySelector("#temp");
+  const feels_like = document.querySelector("#feels_like");
+  const min = document.querySelector("#min");
+  const max = document.querySelector("#max");
   display.style.display = "flex";
   display.style.flexDirection = "column";
   display.style.transition = "ease-in 0.5s;";
+  display.style.alignItems = "center";
   icon.src = `http://openweathermap.org/img/wn/${city.getIcon()}@2x.png`;
   weather.innerText = city.getWeather();
   temp.innerText = `${city.getTemperature()} °C`;
   cityName.innerText = city.getCity();
   countryName.innerText = city.getCountry();
+  feels_like.innerText = city.getFeelsLike();
+  min.innerText = city.getMin();
+  max.innerHTML = city.getMax();
 };
 
 form.addEventListener("submit", async (e) => {

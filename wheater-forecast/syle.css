@@ -74,6 +74,7 @@ h1 {
 
 .weatherDisplay {
   display: none;
+  letter-spacing: 0.2rem;
 }
 
 .contentContainer {
