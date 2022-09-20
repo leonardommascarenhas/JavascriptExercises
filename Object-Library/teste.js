@@ -222,4 +222,14 @@ function addBinary(a, b) {
   return (a + b).toString(2);
 }
 
-console.log(reverseWords("o rato roeu a ropa do rei de roma"));
+function accum(s) {
+  count = 0;
+  let string = s.toUpperCase().split("");
+  let a = string.forEach((element) => {
+    count++;
+    return element;
+  });
+  return a;
+}
+function findEvenIndex(arr) {}
+console.log(accum("teste"));

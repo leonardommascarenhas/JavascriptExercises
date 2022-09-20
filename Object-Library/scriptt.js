@@ -48,14 +48,6 @@ function popUp() {
   modal.style.display = "block";
 }
 
-function addBookToLibrary(name, author, pages) {
-  let book = new Book(name, author, pages);
-  myLibrary.push(book);
-  createCard();
-  form.reset();
-  console.log(myLibrary);
-}
-
 const setError = (element, message) => {
   const inputControl = element.parentElement;
   const errorDisplay = inputControl.querySelector(".error");
@@ -96,8 +88,6 @@ const validateInputs = () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   validateInputs();
-});
-addBtn.addEventListener("click", () => {
   if (
     bookName.parentElement.classList.contains("sucess") &&
     author.parentElement.classList.contains("sucess") &&
@@ -106,6 +96,9 @@ addBtn.addEventListener("click", () => {
     let book = new Book(bookName.value, author.value, pages.value);
     myLibrary.push(book);
     createCard();
-    console.log(myLibrary);
+    form.reset();
+    bookName.parentElement.classList.remove("sucess");
+    author.parentElement.classList.remove("sucess");
+    pages.parentElement.classList.remove("sucess");
   }
 });
